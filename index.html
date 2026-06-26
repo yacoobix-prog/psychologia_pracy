@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Quiz wiedzy</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="glass-card hero-card" id="start-screen">
+      <div class="eyebrow">Interaktywny quiz</div>
+
+      <h1>Sprawdź swoją wiedzę</h1>
+
+      <p class="lead">
+        Wybierz, ile pytań chcesz wylosować z pełnej puli. Po każdej odpowiedzi zobaczysz
+        poprawną odpowiedź oraz krótkie wyjaśnienie.
+      </p>
+
+      <div class="quiz-settings">
+        <label for="question-count">Liczba pytań w teście</label>
+
+        <div class="input-row">
+          <input
+            type="number"
+            id="question-count"
+            min="1"
+            max="150"
+            value="20"
+          />
+
+          <button id="max-btn" type="button">Maks.</button>
+        </div>
+
+        <p class="hint" id="pool-info">Ładowanie puli pytań...</p>
+        <p class="error-message" id="start-error"></p>
+      </div>
+
+      <button class="primary-btn" id="start-btn" type="button">
+        Rozpocznij quiz
+      </button>
+    </section>
+
+    <section class="glass-card quiz-card hidden" id="quiz-screen">
+      <div class="top-bar">
+        <div>
+          <div class="eyebrow">Pytanie</div>
+          <h2 id="question-counter">1 / 20</h2>
+        </div>
+
+        <div class="score-pill">
+          Wynik: <span id="live-score">0</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <article class="question-box">
+        <h3 id="question-text">Treść pytania</h3>
+
+        <div class="answers" id="answers"></div>
+      </article>
+
+      <section class="explanation-box hidden" id="explanation-box">
+        <div class="explanation-title" id="answer-status">Poprawna odpowiedź</div>
+        <p id="explanation-text"></p>
+      </section>
+
+      <div class="actions">
+        <button class="secondary-btn" id="restart-btn" type="button">
+          Zacznij od nowa
+        </button>
+
+        <button class="primary-btn hidden" id="next-btn" type="button">
+          Następne pytanie
+        </button>
+      </div>
+    </section>
+
+    <section class="glass-card result-card hidden" id="result-screen">
+      <div class="eyebrow">Koniec testu</div>
+
+      <h2>Twój wynik</h2>
+
+      <div class="final-score">
+        <span id="final-score-value">0 / 0</span>
+      </div>
+
+      <p class="lead" id="final-message"></p>
+
+      <div class="result-actions">
+        <button class="primary-btn" id="try-again-btn" type="button">
+          Wylosuj nowy test
+        </button>
+      </div>
+
+      <section class="summary-section">
+        <h3>Wszystkie pytania z tego testu</h3>
+        <div id="summary-list" class="summary-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
